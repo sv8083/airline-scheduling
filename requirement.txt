@@ -1,0 +1,18 @@
+
+### Graph Representation
+- Model flights as a **directed graph**.
+- Represent serviced cities as **vertices**.
+- Use **directed edges** to connect departure cities to arrival cities.
+
+### Network Flow Construction
+- Assign **weights or flow capacities** to the edges, representing the number of crew members required per flight.
+- Add a **source vertex**:
+  - Connect this source to the base city of the airline where the personnel are located.
+- Add a **sink vertex**:
+  - Connect the sink to all destination cities.
+
+### Optimization Objectives
+- Calculate the **minimum flow** required to cover all vertices:
+  - Determines the minimum number of crew members needed to operate all flights.
+- Optionally, use **weighted vertices** based on city importance to:
+  - Calculate schedules for a reduced number of crew members that might not cover all cities.

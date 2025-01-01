@@ -3,18 +3,14 @@
 Welcome to the Airline Scheduling Service API! 
 1. This API allows enterprises to optimize flight crew scheduling using graph theory and flow algorithms. The service models flights, cities, and crew requirements as a network flow problem to calculate optimal crew allocations.
 
-2. 
 
 ## Base URL 
 https://api.airline-scheduling.com/v1
 
 
----
-
 ## Authentication
 All endpoints require an API key for authentication. Include it in the `Authorization` header as:
 
----
 
 ## API Endpoints
 
