@@ -1,4 +1,4 @@
-const { Flight } = require('../models');
+const { Flight } = require('./models');
 
 /**
  * Create a new flight.

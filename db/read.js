@@ -1,5 +1,5 @@
 const { Op } = require('sequelize');
-const {Flight} = require('./models')
+const {Flight} = require('./models');
 
 /**
  * Get tenant conversations by parameters.

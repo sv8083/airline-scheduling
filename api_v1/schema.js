@@ -14,5 +14,19 @@ function validateGetFlightQuerySchema(query) {
     return value; // return sanitized values
 }
 
+const postFlightReqBody = Joi.object({
+    departureCity: Joi.string().min(3).max(50).required(),
+    arrivalCity: Joi.string().min(3).max(50).required(),
+    name: Joi.string().min(3).max(255).required(),
+});
 
-module.exports = { validateGetFlightQuerySchema };
+function validatepostFlightReqBody(data) {
+    const { error, value } = postFlightReqBody.validate(data);
+    if (error) {
+        throw new Error(error.details.map(e => e.message).join(', '));
+    }
+    return value; // return sanitized values
+}
+
+
+module.exports = { validateGetFlightQuerySchema, validatepostFlightReqBody };
