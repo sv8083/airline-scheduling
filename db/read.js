@@ -36,13 +36,13 @@ async function getDBFlightsByParams({ departureCity, arrivalCity, name, multiple
     if (multiple) {
         return await Flight.findAll({
             where: whereClause,
-            order: [['id', 'ASC']], // Optional ordering
+            order: [['flight_id', 'ASC']], // Optional ordering
         });
     }
     else {
         return await Flight.findOne({
             where: whereClause,
-            order: [['id', 'ASC']], // Optional ordering
+            order: [['flight_id', 'ASC']], // Optional ordering
         });
     }
 }

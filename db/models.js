@@ -15,37 +15,43 @@ const City = sequelize.define('City', {
 });
 
 // Define Flights model
-const Flight = sequelize.define('Flight', {
-  id: {
-    type: DataTypes.STRING(10),
-    primaryKey: true,
-  },
-  name: {
-    type: DataTypes.STRING(255),
-    primaryKey: true,
-  },
-  departureCityId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: {
-      model: City,
-      key: 'id',
+const Flight = sequelize.define('Flight',
+  {
+    flight_id: {
+      type: DataTypes.STRING(10),
+      primaryKey: true,
+    },
+    name: {
+      type: DataTypes.STRING(255),
+      unique: true,
+    },
+    departure_city_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: City,
+        key: 'id',
+      },
+    },
+    arrival_city_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: City,
+        key: 'id',
+      },
     },
   },
-  arrivalCityId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: {
-      model: City,
-      key: 'id',
-    },
-  },
-});
+  {
+    tableName: 'flights', // Custom table name
+    timestamps: false,
+  }
+);
 
 // Define relationships
-City.hasMany(Flight, { foreignKey: 'departureCityId', as: 'departingFlights' });
-City.hasMany(Flight, { foreignKey: 'arrivalCityId', as: 'arrivingFlights' });
-Flight.belongsTo(City, { foreignKey: 'departureCityId', as: 'departureCity' });
-Flight.belongsTo(City, { foreignKey: 'arrivalCityId', as: 'arrivalCity' });
+// City.hasMany(Flight, { foreignKey: 'departureCityId', as: 'departingFlights' });
+// City.hasMany(Flight, { foreignKey: 'arrivalCityId', as: 'arrivingFlights' });
+// Flight.belongsTo(City, { foreignKey: 'departureCityId', as: 'departureCity' });
+// Flight.belongsTo(City, { foreignKey: 'arrivalCityId', as: 'arrivalCity' });
 
 module.exports = { City, Flight };
